@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>GTA III</title>
+
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./touch.css">
+</head>
+<body
+  data-is-touch="0"
+  data-state-menu="1"
+  data-state-cutscene="0"
+  data-state-car="0"
+  data-state-gun="0"
+  data-state-car-gun="0"
+  data-state-job="0"
+  data-state-veh-gun="0"
+  data-state-download="0">
+
+  <main id="home-view" class="screen-view">
+    <div class="center-content">
+      <div class="menu-box">
+        <button id="btn-play-game" class="action-btn main-action-btn">PLAY GAME</button>
+        <button id="btn-open-saves" class="action-btn main-action-btn">SAVE MANAGER</button>
+        <button id="btn-open-mods" class="action-btn main-action-btn">MOD MANAGER</button>
+      </div>
+    </div>
+  </main>
+
+  <section id="save-view" class="screen-view" style="display:none">
+    <div class="center-content save-page-content">
+      <h1 class="header-line1">Save Manager</h1>
+      <div class="global-actions">
+        <button id="btn-save-back" class="action-btn">BACK</button>
+        <button id="btn-save-refresh" class="action-btn">REFRESH</button>
+        <button id="btn-save-wipe" class="action-btn btn-red">WIPE SAVES</button>
+      </div>
+      <input id="save-file-input" type="file" accept=".b" hidden>
+      <div id="slots-container" class="slots-list"></div>
+    </div>
+  </section>
+
+  <section id="mods-view" class="screen-view" style="display:none">
+    <div class="center-content save-page-content">
+      <h1 class="header-line1">Mod Manager</h1>
+      <div class="global-actions">
+        <button id="btn-mods-back" class="action-btn">BACK</button>
+        <button id="btn-mods-upload" class="action-btn">UPLOAD MODS</button>
+        <button id="btn-mods-refresh" class="action-btn">REFRESH</button>
+        <button id="btn-mods-wipe" class="action-btn btn-red">REMOVE ALL MODS</button>
+      </div>
+      <input id="mod-file-input" type="file" accept=".dff,.txd,.col,.bmp,.png,.jpg" multiple hidden>
+      <div id="mods-container" class="slots-list"></div>
+    </div>
+  </section>
+
+  <main id="game-container" style="display:none">
+    <div id="wrap">
+      <canvas id="canvas" width="1280" height="720" tabindex="0"></canvas>
+      <input id="cheat-input" type="text" autocomplete="off" autocorrect="off"
+        autocapitalize="none" spellcheck="false"
+        style="position:absolute;left:-10000px;top:0;width:1px;height:1px">
+    </div>
+
+    <div id="status-overlay" class="status-overlay" style="display:none">
+      <div id="loading-box" class="loading-container">
+        <h2 class="loading-text">LOADING...</h2>
+        <div class="loading-subtext">The first load may take a while.</div>
+        <div class="progress-bar-bg">
+          <div id="loading-bar-fill" class="progress-bar-fill"></div>
+        </div>
+        <div id="loading-percent" class="progress-percent">0%</div>
+      </div>
+      <div id="start-prompt" class="start-prompt" style="display:none">
+        <h1>CLICK OR TAP TO START</h1>
+      </div>
+    </div>
+
+    <div class="touch-controls-wrapper">
+      <div id="touch-move"></div>
+      <div id="touch-look"></div>
+      <button type="button" class="touch-control run" aria-label="Run"></button>
+      <button type="button" class="touch-control fist" aria-label="Attack"></button>
+      <button type="button" class="touch-control jump" aria-label="Jump"></button>
+      <button type="button" class="touch-control getIn" aria-label="Enter vehicle"></button>
+      <button type="button" class="touch-control radio" aria-label="Radio"></button>
+      <button type="button" class="touch-control drift" aria-label="Brake"></button>
+      <button type="button" class="touch-control weapon" aria-label="Weapon"></button>
+      <button type="button" class="touch-control camera" aria-label="Camera"></button>
+      <button type="button" class="touch-control menu" aria-label="Menu"></button>
+      <button type="button" class="touch-control horn" aria-label="Horn"></button>
+      <button type="button" class="touch-control job" aria-label="Action"></button>
+      <button type="button" class="touch-control fireLeft" aria-label="Fire"></button>
+      <button type="button" class="touch-control fireRight" aria-label="Fire"></button>
+      <button type="button" class="touch-control cheats" aria-label="Cheats"></button>
+    </div>
+  </main>
+
+  <div id="status" hidden></div>
+  <div id="progress" hidden></div>
+  <div id="tap-hint" hidden></div>
+
+  <!-- packages.js must define window.DATA_PACKAGE before game.js runs. -->
+  <script src="./packages.js"></script>
+  <script src="./gamepad-emulator.js"></script>
+  <script src="./index.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
